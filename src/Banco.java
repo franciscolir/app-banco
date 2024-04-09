@@ -68,6 +68,9 @@ public class Banco {
                         }
                     }
                     break;
+                case 9:
+                    System.out.println("Saliendo del programa. ¡Gracias por utilizar nuestros servicios!");
+                    break;
                 default:
                     System.out.println("Opcion no valida");
             }
