@@ -4,35 +4,25 @@ public class Banco {
     public static void main(String[] args) {
 
         Scanner teclado = new Scanner(System.in);
+        int numeroDeOpcion = teclado.nextInt();
         String nombreCliente = "Tony Stark";
         String tipoCuenta = "Corriente";
         double saldoDisponible = 1599.99;
-        String datosCliente = """
-                 ******************************************
-                
-               
-                 Nombre del Cliente:"""  + " " + nombreCliente +
+        System.out.println("********************************************");
+        System.out.println("Nombre del Cliente: " + nombreCliente);
+        System.out.println("Tipo de Cuenta: " + tipoCuenta);
+        System.out.println("Saldo Disponible: " + saldoDisponible +"$");
+        System.out.println("\n********************************************");
 
-                """
-               
-                Tipo de Cuenta:""" + " " + tipoCuenta +
-
-                """
-              
-                Saldo Disponible:""" + " $" + saldoDisponible;
         String menuInicial = """
-       
-                
-                ******************************************
-                **Escriba en numero de la opcion deseada**
+                ***Escriba en numero de la opcion deseada***
                 1 - Consultar saldo
                 2 - Retirar
                 3 - Depositar
                 9 - Salir
-                
-                """;
-        System.out.println (datosCliente + menuInicial);
-        int numeroDeOpcion = teclado.nextInt();
+                \n""";
+        System.out.println (menuInicial);
+
 
         while (numeroDeOpcion != 9) {
 
