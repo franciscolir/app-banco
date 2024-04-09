@@ -4,10 +4,10 @@ public class Banco {
     public static void main(String[] args) {
 
         Scanner teclado = new Scanner(System.in);
-        int numeroDeOpcion = teclado.nextInt();
         String nombreCliente = "Tony Stark";
         String tipoCuenta = "Corriente";
         double saldoDisponible = 1599.99;
+        int numeroDeOpcion = 0;
         System.out.println("********************************************");
         System.out.println("Nombre del Cliente: " + nombreCliente);
         System.out.println("Tipo de Cuenta: " + tipoCuenta);
@@ -15,31 +15,25 @@ public class Banco {
         System.out.println("\n********************************************");
 
         String menuInicial = """
-                ***Escriba en numero de la opcion deseada***
+                \n***Escriba en numero de la opcion deseada***
                 1 - Consultar saldo
                 2 - Retirar
                 3 - Depositar
                 9 - Salir
                 \n""";
-        System.out.println (menuInicial);
-
-
         while (numeroDeOpcion != 9) {
-
+            System.out.println (menuInicial);
+            numeroDeOpcion = teclado.nextInt();
             switch (numeroDeOpcion) {
                 case 1:
                     System.out.println("Saldo disponible: " + saldoDisponible);
-                    System.out.println(menuInicial);
-                    numeroDeOpcion = teclado.nextInt();
                     break;
-
                 case 2:
                     System.out.println("Ingrese monto a retirar");
-                    double retiro = teclado.nextDouble();
-                    if (saldoDisponible < retiro) {
-                        System.out.println("¡Saldo insuficiente!");
-
-                    } else {
+                    double valorARetirar = teclado.nextDouble();
+                    if (saldoDisponible < valorARetirar) {
+                        System.out.println("Saldo insuficiente");
+                        }else{
                         System.out.println("""
                                     ¿El monto esta correcto?
                                     1 - SI.
@@ -47,24 +41,19 @@ public class Banco {
                                     """);
                         int numeroDeOpcionConfirmacion = teclado.nextInt();
                         if (numeroDeOpcionConfirmacion == 1) {
-                            saldoDisponible = saldoDisponible-retiro;
-                            System.out.println("!Retiro exitoso!. Actualmente " + nombreCliente + " tiene en su cuenta: " + saldoDisponible);
-                        } else {
+                            saldoDisponible -= valorARetirar;
+                            System.out.println("!Retiro exitoso!. El saldo actualizado es: " + saldoDisponible);
+                            }else{
                             System.out.println("Monto no confirmado");
                         }
                     }
-
-                    System.out.println(menuInicial);
-                    numeroDeOpcion = teclado.nextInt();
                     break;
-
                 case 3:
                     System.out.println("Ingrese monto a depositar");
-                    double deposito = teclado.nextDouble();
-
-                    if (deposito <= 0) {
+                    double valorADepositar = teclado.nextDouble();
+                    if (valorADepositar <= 0) {
                         System.out.println("¡Ingrese monto valido!");
-                    } else {
+                    }else{
                         System.out.println("""
                                     ¿El monto esta correcto?
                                     1 - SI.
@@ -72,21 +61,15 @@ public class Banco {
                                     """);
                         int numeroDeOpcionConfirmacion = teclado.nextInt();
                         if (numeroDeOpcionConfirmacion == 1) {
-                            saldoDisponible = saldoDisponible + deposito;
-                            System.out.println("!Deposito exitoso!. Actualmente " + nombreCliente + " tiene en su cuenta: " + saldoDisponible);
-                        } else {
+                            saldoDisponible += valorADepositar;
+                            System.out.println("!Deposito exitoso!. El saldo actualizado es: " + saldoDisponible);
+                        }else{
                             System.out.println("Monto no confirmado");
                         }
                     }
-                    System.out.println(menuInicial);
-                    numeroDeOpcion = teclado.nextInt();
                     break;
-
                 default:
-                    System.out.println("¡Ingrese opcion valida!");
-                    System.out.println(menuInicial);
-                    numeroDeOpcion = teclado.nextInt();
-                    break;
+                    System.out.println("Opcion no valida");
             }
         }
     }
